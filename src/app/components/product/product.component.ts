@@ -31,10 +31,20 @@ export class ProductComponent {
   }
 
   public addToBasket(product: Product) {
-    this.basketService.add(product);
+    if (product.amount > 0) {
+      product.amount--;
+      this.basketService.add(product);
+    }
   }
 
-  private removeFromBasket(product: Product) {
-    this.basketService.removeOne(product);
+  public removeFromBasket(product: Product) {
+    if (this.basketService.itemIsInCart(product)) {
+      product.amount++;
+      this.basketService.removeOne(product);
+    }
+  }
+
+  public isInBasket(product: Product) {
+    return this.basketService.itemIsInCart(product);
   }
 }

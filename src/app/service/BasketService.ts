@@ -7,63 +7,40 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class BasketService {
-  private itemsInCartSubject: BehaviorSubject<ProductInBasket[]> = new BehaviorSubject([]);
-  private itemsInCart: ProductInBasket[] = [];
+  private itemsInCartSubject: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  private itemsInCart: Product[] = [];
 
   constructor() {
     this.itemsInCartSubject.subscribe(_ => this.itemsInCart = _);
   }
 
-  public add(item: Product) {
-    const itemInCart = this.itemIsInCart(item);
-    if (itemInCart != null) {
-      itemInCart.amount++;
+  public add(product: Product) {
+      this.itemsInCartSubject.next([...this.itemsInCart, product]);
+  }
+
+  public removeOne(product: Product) {
+    let currentItems = [...this.itemsInCart];
+    if (currentItems.length > 1) {
+      currentItems.splice(currentItems.indexOf(product), 1);
     } else {
-      const productInBasket = new ProductInBasket(item);
-      this.itemsInCartSubject.next([...this.itemsInCart, productInBasket]);
+      currentItems = [];
     }
-    console.log(this.itemsInCart);
+    this.itemsInCartSubject.next(currentItems);
   }
 
-  public removeOne(item: Product) {
-    const itemInCart = this.itemIsInCart(item);
-    if (itemInCart != null) {
-      if (itemInCart.amount === 1) {
-        this.remove(item);
-      } else {
-        itemInCart.amount--;
-      }
-    }
-  }
-
-  public remove(item: Product) {
-    this.itemsInCart = this.itemsInCart.filter(i => {
-      return !(i.product.id === item.id);
-    });
-    console.log(this.itemsInCart);
-  }
-
-  private itemIsInCart(item: Product) {
-    return this.itemsInCart.find(_ => _.product.id === item.id);
+  public itemIsInCart(item: Product): boolean {
+    return this.itemsInCart.find(_ => _.id === item.id) != null;
   }
 
   public getTotalPrice(): Observable<number> {
-    return this.itemsInCartSubject.pipe(map((items: ProductInBasket[]) => {
-      return items.reduce((prev, curr: ProductInBasket) => {
-        return prev + curr.product.price * curr.amount;
+    return this.itemsInCartSubject.pipe(map((items: Product[]) => {
+      return items.reduce((prev, curr: Product) => {
+        return prev + curr.price;
       }, 0);
     }));
   }
 
-  public getAmount(): Observable<number> {
-    return this.itemsInCartSubject.pipe(map((items: ProductInBasket[]) => {
-      return items.reduce((prev, curr: ProductInBasket) => {
-        return prev + curr.amount;
-      }, 0);
-    }));
-  }
-
-  public getItems(): Observable<ProductInBasket[]> {
+  public getItems(): Observable<Product[]> {
     return this.itemsInCartSubject.asObservable();
   }
 }

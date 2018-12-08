@@ -21,8 +21,8 @@ export class BasketPreviewComponent implements OnInit {
     this.basketService.getTotalPrice().subscribe(
       data => this.totalPrice = data
     );
-    this.basketService.getAmount().subscribe(
-      data => this.amount = data
+    this.basketService.getItems().subscribe(
+      data => this.amount = data.length
     );
   }
 

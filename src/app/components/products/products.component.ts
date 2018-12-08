@@ -16,8 +16,7 @@ export class ProductsComponent implements OnInit {
   private products: Product[];
 
   constructor(
-    private productsService: ProductsService,
-    private basketService: BasketService) {
+    private productsService: ProductsService) {
   }
 
   public isCheapest(product: Product) {
