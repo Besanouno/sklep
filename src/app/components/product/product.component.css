@@ -1,0 +1,52 @@
+img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.no-product {
+  color: red;
+}
+
+.small-amount {
+  color: orange;
+}
+
+.normal-amount {
+  color: black;
+}
+
+.most-expensive {
+  border: 1pt solid red;
+}
+
+.cheapest {
+  border: 1pt solid green;
+}
+
+.name {
+  width: 200px;
+}
+
+.desc {
+  width: 200px;
+}
+
+.price {
+  width: 50px;
+}
+
+.photo {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.amount {
+  width: 150px;
+}
+.removeButton {
+  margin-left: 200px;
+}
+span {
+  display: inline-block;
+}

@@ -1,0 +1,17 @@
+<div
+  [ngClass]="{'no-product': !isProductAvailable(product), 'small-amount': isSmallAmountOfProduct(product)}">
+  <span class="name" style="text-transform: uppercase">{{product.name}}</span>
+  <span class="desc">{{product.description}}</span>
+  <span class="price">{{product.price}} zł</span>
+  <span class="photo"><img src="{{product.photoAddress}}"/></span>
+  <span class="amount"><span *ngIf="isProductAvailable(product); else unavailableProduct">{{product.amount}}</span></span>
+  <span class="button">
+    <button *ngIf="isProductAvailable(product)" (click)="addToBasket(product)">+</button>
+  </span>
+  <span><button (click)="removeFromBasket(product)">-</button></span>
+  <span class="removeButton">
+    <button (click)="removeProduct()">Usuń</button>
+  </span>
+</div>
+
+<ng-template #unavailableProduct>Niedostępny</ng-template>

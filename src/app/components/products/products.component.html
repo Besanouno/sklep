@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkt</title>
+</head>
+<body>
+<app-header-component></app-header-component>
+
+<h1>Produkty:</h1>
+
+  <app-product-component *ngFor="let product of getProducts()"
+                         [product]="product"
+                         (productRemoval)="removeProductFromList(product)">
+  </app-product-component>
+
+</body>
+</html>
