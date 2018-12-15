@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/internal/Observable';
-import {Product} from '../../model/Product';
-import {of} from 'rxjs/internal/observable/of';
+import {Location} from '@angular/common';
 import {BasketService} from '../../service/BasketService';
+import {ProductInBasket} from '../../model/ProductInBasket';
 
 @Component({
   selector: 'app-basket',
@@ -11,18 +10,35 @@ import {BasketService} from '../../service/BasketService';
 })
 export class BasketComponent implements OnInit {
 
-  public shoppingCartItems$: Observable<Product[]> = of([]);
-  public shoppingCartItems: Product[] = [];
+  private totalPrice: string;
+  private products: ProductInBasket[];
 
-  constructor(private basketService: BasketService) {
-    // this.shoppingCartItems$ = this
-    //   .basketService
-    //   .getItems();
+  constructor(
+    private basketService: BasketService,
+    private _location: Location) {}
 
-    this.shoppingCartItems$.subscribe(_ => this.shoppingCartItems = _);
+  backClicked() {
+    this._location.back();
   }
 
   ngOnInit() {
+    this.basketService.getItems().subscribe(
+      data => {
+        this.products = data.reduce((products, item) => {
+          const productInBasket = products.find(_ => _.product.id === item.id);
+          if (productInBasket != null) {
+            productInBasket.amount++;
+          } else {
+            products.push(new ProductInBasket(item, 1));
+          }
+          return products;
+        }, []);
+        console.log(this.products);
+      }
+    );
+    this.basketService.getTotalPrice().subscribe(
+      data => this.totalPrice = data.toFixed(2)
+    );
   }
 
 }

@@ -9,15 +9,16 @@ import {BasketComponent} from './components/basket/basket.component';
 import {HeaderComponent} from './components/header/header.component';
 import {ProductComponent} from './components/product/product.component';
 import {HttpClientModule} from '@angular/common/http';
-import {InMemoryProductService} from './service/InMemoryProductService';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {ProductsService} from './service/ProductsService';
 import {BasketService} from './service/BasketService';
 import {BasketPreviewComponent} from './components/basketPreview/basket.preview.component';
+import {NewProductComponent} from './components/newProduct/new.product.component';
 
 
 const routes: Routes = [
-  {path: '', component: ProductsComponent}
+  {path: '', component: ProductsComponent},
+  {path: 'basket', component: BasketComponent},
+  {path: 'new', component: NewProductComponent}
 ];
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
     ProductComponent,
     ProductsComponent,
     HeaderComponent,
-    BasketPreviewComponent
+    BasketPreviewComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,

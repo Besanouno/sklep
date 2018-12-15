@@ -32,14 +32,12 @@ export class ProductComponent {
 
   public addToBasket(product: Product) {
     if (product.amount > 0) {
-      product.amount--;
       this.basketService.add(product);
     }
   }
 
   public removeFromBasket(product: Product) {
     if (this.basketService.itemIsInCart(product)) {
-      product.amount++;
       this.basketService.removeOne(product);
     }
   }

@@ -1,3 +1,14 @@
-<b>Koszyk:</b> {{amount}} produkt(ów), {{totalPrice}} zł <button>Do kasy</button>
+<div class="basket-preview" style="display: inline-block">
+  <div style="float:left; margin-right: 10px">
+    <b>Koszyk:</b> {{amount}} produkt(ów), {{totalPrice}} zł
+  </div>
+  <div style="float:right">
+    <a routerLink="/basket"
+       routerLinkActive="active">
+      <img style="margin-right: 6%"
+           src="shopping-cart.png"/>
+    </a>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

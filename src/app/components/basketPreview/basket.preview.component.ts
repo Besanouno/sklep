@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
-import {Product} from '../../model/Product';
-import {of} from 'rxjs/internal/observable/of';
 import {BasketService} from '../../service/BasketService';
 
 @Component({
@@ -11,18 +9,18 @@ import {BasketService} from '../../service/BasketService';
 })
 export class BasketPreviewComponent implements OnInit {
 
-  private amount: number;
-  private totalPrice: number;
+  private amount: string;
+  private totalPrice: string;
 
   public constructor(
     private basketService: BasketService) {}
 
   ngOnInit(): void {
     this.basketService.getTotalPrice().subscribe(
-      data => this.totalPrice = data
+      data => this.totalPrice = data.toFixed(2)
     );
     this.basketService.getItems().subscribe(
-      data => this.amount = data.length
+      data => this.amount = data.length.toString()
     );
   }
 

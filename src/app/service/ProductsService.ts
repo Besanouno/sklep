@@ -12,7 +12,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {
     this.getProducts().subscribe(
-      data => { this.products = JSON.parse(data.toString()); }
+      data => { this.products =  data; }
     );
   }
 

@@ -1,3 +1,15 @@
-Welcome to {{ title }}
+<button (click)="backClicked()">Wróć</button>
+<table>
+  <tr>
+    <td>Nazwa</td>
+    <td>Ilość</td>
+    <td>Cena</td>
+  </tr>
+  <tr *ngFor="let p of products">
+    <td>{{p.product.name}}</td>
+    <td>{{p.amount}}</td>
+    <td>{{(p.amount * p.product.price).toFixed(2)}}</td>
+  </tr>
+</table>
 
 <router-outlet></router-outlet>
