@@ -1,34 +1,36 @@
 <!--<div-->
-  <!--[ngClass]="{'no-product': !isProductAvailable(product), 'small-amount': isSmallAmountOfProduct(product)}">-->
-  <!--<span class="name" style="text-transform: uppercase">{{product.name}}</span>-->
-  <!--<span class="desc">{{product.description}}</span>-->
-  <!--<span class="price">{{product.price}} zł</span>-->
-  <!--<span class="photo"></span>-->
-  <!--<span class="amount"><span *ngIf="isProductAvailable(product); else unavailableProduct">{{product.amount}}</span></span>-->
-  <!--<span class="button">-->
-    <!--<button *ngIf="isProductAvailable(product)" (click)="addToBasket(product)">+</button>-->
-  <!--</span>-->
-  <!--<span><button *ngIf="isInBasket(product)" (click)="removeFromBasket(product)">-</button></span>-->
-  <!--<span class="removeButton">-->
-    <!--<button (click)="removeProduct()">Usuń</button>-->
-  <!--</span>-->
+<!--[ngClass]="{'no-product': !isProductAvailable(product), 'small-amount': isSmallAmountOfProduct(product)}">-->
+<!--<span class="name" style="text-transform: uppercase">{{product.name}}</span>-->
+<!--<span class="desc">{{product.description}}</span>-->
+<!--<span class="price">{{product.price}} zł</span>-->
+<!--<span class="photo"></span>-->
+<!--<span class="amount"><span *ngIf="isProductAvailable(product); else unavailableProduct">{{product.amount}}</span></span>-->
+<!--<span class="button">-->
+<!--<button *ngIf="isProductAvailable(product)" (click)="addToBasket(product)">+</button>-->
+<!--</span>-->
+<!--<span><button *ngIf="isInBasket(product)" (click)="removeFromBasket(product)">-</button></span>-->
+<!--<span class="removeButton">-->
+<!--<button (click)="removeProduct()">Usuń</button>-->
+<!--</span>-->
 <!--</div>-->
 <div class="product-grid">
   <div class="product-image">
-      <img class="pic-1" src="{{product.photoAddress}}">
+    <img class="pic-1" src="{{product.photoAddress}}">
     <ul class="social">
-      <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-      <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-      <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+      <li><a data-tip="Usuń produkt"><i class="fa fa-remove" (click)="removeProduct()"></i></a></li>
+      <li><a data-tip="Usuń z koszyka" (click)="removeFromBasket()"><i class="fa fa-minus"></i></a></li>
+      <li><a data-tip="Dodaj do koszyka" (click)="addToBasket()"><i class="fa fa-plus"></i></a></li>
     </ul>
-    <span class="product-new-label">Wyprzedaż</span>
-    <span class="product-discount-label">20%</span>
+    <div *ngIf="product.activeSale">
+      <span class="product-new-label">Wyprzedaż</span>
+      <span class="product-discount-label">{{product.rabat}}%</span>
+    </div>
   </div>
   <div class="product-content">
     <h2 class="title">{{product.name}}</h2>
     <h1 class="description">{{product.description}}</h1>
-    <div class="price">$16.00
-      <span>$20.00</span>
+    <div class="price">{{product.price}} zł
+      <span *ngIf="product.activeSale">{{product.oldPrice}} zł</span>
     </div>
   </div>
 </div>

@@ -30,15 +30,15 @@ export class ProductComponent {
     this.productRemoval.emit(this.product);
   }
 
-  public addToBasket(product: Product) {
-    if (product.amount > 0) {
-      this.basketService.add(product);
+  public addToBasket() {
+    if (this.product.amount > 0) {
+      this.basketService.add(this.product);
     }
   }
 
-  public removeFromBasket(product: Product) {
-    if (this.basketService.itemIsInCart(product)) {
-      this.basketService.removeOne(product);
+  public removeFromBasket() {
+    if (this.basketService.itemIsInCart(this.product)) {
+      this.basketService.removeOne(this.product);
     }
   }
 
