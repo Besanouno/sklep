@@ -13,6 +13,7 @@ import {ProductsService} from './service/ProductsService';
 import {BasketService} from './service/BasketService';
 import {BasketPreviewComponent} from './components/basketPreview/basket.preview.component';
 import {NewProductComponent} from './components/newProduct/new.product.component';
+import {MenuComponent} from './components/menu/menu.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     ProductsComponent,
     HeaderComponent,
     BasketPreviewComponent,
-    NewProductComponent
+    NewProductComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
