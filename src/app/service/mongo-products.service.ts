@@ -4,7 +4,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable()
-export class ProductsService {
+export class MongoProductsService {
 
   private products: Product[];
 

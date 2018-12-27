@@ -9,17 +9,32 @@ import {BasketComponent} from './components/basket/basket.component';
 import {HeaderComponent} from './components/header/header.component';
 import {ProductComponent} from './components/product/product.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ProductsService} from './service/ProductsService';
+import {MongoProductsService} from './service/mongo-products.service';
 import {BasketService} from './service/BasketService';
 import {BasketPreviewComponent} from './components/basketPreview/basket.preview.component';
 import {NewProductComponent} from './components/newProduct/new.product.component';
 import {MenuComponent} from './components/menu/menu.component';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import {AuthGuard} from './firebase/auth.guard';
+import {OrderComponent} from './components/order/order.component';
+import {FirebaseProductsService} from './service/firebase-products.service';
+import {environment} from '../environments/environment';
+import {LoginComponent} from './components/login/login.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 
 const routes: Routes = [
   {path: '', component: ProductsComponent},
   {path: 'basket', component: BasketComponent},
-  {path: 'new', component: NewProductComponent}
+  {path: 'new', component: NewProductComponent},
+  {
+    path: 'order',
+    component: OrderComponent,
+    canActivate: [AuthGuard]
+  },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegistrationComponent}
 ];
 
 
@@ -32,16 +47,23 @@ const routes: Routes = [
     HeaderComponent,
     BasketPreviewComponent,
     NewProductComponent,
-    MenuComponent
+    MenuComponent,
+    OrderComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [
-    ProductsService,
+    MongoProductsService,
+    FirebaseProductsService,
     BasketService
   ],
   bootstrap: [AppComponent]

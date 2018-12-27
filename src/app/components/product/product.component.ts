@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../model/Product';
-import {ProductsService} from '../../service/ProductsService';
+import {MongoProductsService} from '../../service/mongo-products.service';
 import {BasketService} from '../../service/BasketService';
 
 @Component({

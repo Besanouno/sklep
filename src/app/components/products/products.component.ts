@@ -2,21 +2,22 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../model/Product';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
-import {ProductsService} from '../../service/ProductsService';
+import {MongoProductsService} from '../../service/mongo-products.service';
 import {BasketService} from '../../service/BasketService';
+import {FirebaseProductsService} from '../../service/firebase-products.service';
 
 @Component({
   selector: 'app-products-component',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers: [ProductsService]
+  providers: [FirebaseProductsService]
 })
 export class ProductsComponent implements OnInit {
 
   private products: Product[];
 
   constructor(
-    private productsService: ProductsService) {
+    private productsService: FirebaseProductsService) {
   }
 
   public isCheapest(product: Product) {
@@ -34,7 +35,11 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(
-      data => this.products = data
+      data => {
+        console.log('elo');
+        console.log(data);
+        this.products = data;
+      }
     );
   }
 

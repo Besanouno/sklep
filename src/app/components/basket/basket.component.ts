@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {BasketService} from '../../service/BasketService';
 import {ProductInBasket} from '../../model/ProductInBasket';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -11,11 +12,13 @@ import {ProductInBasket} from '../../model/ProductInBasket';
 export class BasketComponent implements OnInit {
 
   private totalPrice: string;
+  private totalAmount = 0;
   private products: ProductInBasket[];
 
   constructor(
     private basketService: BasketService,
-    private _location: Location) {}
+    private _location: Location,
+    private router: Router) {}
 
   backClicked() {
     this._location.back();
@@ -31,6 +34,7 @@ export class BasketComponent implements OnInit {
           } else {
             products.push(new ProductInBasket(item, 1));
           }
+          this.totalAmount++;
           return products;
         }, []);
         console.log(this.products);
