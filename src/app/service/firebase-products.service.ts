@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/internal/Observable';
 import {Injectable, OnInit} from '@angular/core';
-import {Product} from '../model/Product';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import {ProductDraft} from '../model/ProductDraft';
 
 @Injectable()
 export class FirebaseProductsService implements OnInit {
@@ -17,5 +17,9 @@ export class FirebaseProductsService implements OnInit {
 
   public getProducts(): Observable<any[]> {
     return this.db.list('products').valueChanges();
+  }
+
+  public saveProduct(draft: ProductDraft) {
+    this.data.push([draft]);
   }
 }

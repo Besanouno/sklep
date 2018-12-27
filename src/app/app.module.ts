@@ -24,6 +24,7 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './components/login/login.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FirebaseUsersService} from './service/firebase-users.service';
 
 const routes: Routes = [
   {path: '', component: ProductsComponent},
@@ -67,6 +68,7 @@ const routes: Routes = [
   providers: [
     MongoProductsService,
     FirebaseProductsService,
+    FirebaseUsersService,
     BasketService
   ],
   bootstrap: [AppComponent]

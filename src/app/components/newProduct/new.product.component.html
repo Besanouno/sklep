@@ -1,1 +1,50 @@
-dupa
+<form method="POST" class="register-form" id="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="form-group">
+    <label for="firstName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+    <input type="text" name="firstName" id="firstName" placeholder="Imię" formControlName="firstName"/>
+  </div>
+  <div class="form-group">
+    <label for="lastName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+    <input type="text" name="lastName" id="lastName" placeholder="Nazwisko" formControlName="lastName"/>
+  </div>
+  <div class="form-group">
+    <label for="email"><i class="zmdi zmdi-email"></i></label>
+    <input type="email" name="email" id="email2" placeholder="Email" formControlName="email"/>
+  </div>
+  <div class="form-group">
+    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+    <input type="password" name="pass" id="pass" placeholder="Password" formControlName="password"/>
+  </div>
+  <div class="form-group">
+    <label for="street"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="street" id="street" placeholder="Ulica" formControlName="street"/>
+  </div>
+  <div class="form-group">
+    <label for="houseNo"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="houseNo" id="houseNo" placeholder="Numer domu" formControlName="houseNo"/>
+  </div>
+  <div class="form-group">
+    <label for="flatNo"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="flatNo" id="flatNo" placeholder="Numer mieszkania" formControlName="flatNo"/>
+  </div>
+  <div class="form-group">
+    <label for="zipCode"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="zipCode" id="zipCode" placeholder="Kod pocztowy" formControlName="zipCode"/>
+  </div>
+  <div class="form-group">
+    <label for="city"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="city" id="city" placeholder="Miasto" formControlName="city"/>
+  </div>
+  <div class="form-group">
+    <label for="phone"><i class="zmdi zmdi-lock-outline"></i></label>
+    <input type="text" name="phone" id="phone" placeholder="Numer telefonu" formControlName="phone"/>
+  </div>
+  <div class="form-group">
+    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
+    <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a
+      href="#" class="term-service">Terms of service</a></label>
+  </div>
+  <div class="form-group form-button">
+    <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+  </div>
+</form>

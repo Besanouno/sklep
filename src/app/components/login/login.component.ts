@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../firebase/auth.service';
-import {Credentials} from '../../firebase/auth.service';
+import {FirebaseUsersService} from '../../service/firebase-users.service';
+import {UserType} from '../../model/UserType';
 
 @Component({
   selector: 'app-login-component',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private usersService: FirebaseUsersService
   ) {}
 
   ngOnInit() {
@@ -57,5 +59,16 @@ export class LoginComponent implements OnInit {
     const registerFormValue = this.registerForm.value;
     this.authService.register({email: registerFormValue.email, password: registerFormValue.password})
       .then(_ => console.log(_));
+    this.usersService.saveUser({
+      firstName: registerFormValue.firstName,
+      lastName: registerFormValue.lastName,
+      phone: registerFormValue.phone,
+      street: registerFormValue.street,
+      flatNo: registerFormValue.flatNo,
+      houseNo: registerFormValue.houseNo,
+      zipCode: registerFormValue.zipCode,
+      city: registerFormValue.city,
+      type: UserType.CLIENT
+    });
   }
 }
