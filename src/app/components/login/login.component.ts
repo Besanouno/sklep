@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   register(): void {
+    console.log(this.registerForm.value);
     if (!this.registerForm.valid) {
       return;
     }
