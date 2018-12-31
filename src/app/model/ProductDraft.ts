@@ -3,5 +3,5 @@ export interface ProductDraft {
   price: number;
   amount: number;
   description: string;
-  photoAddress: string;
+  imgSrc: string;
 }

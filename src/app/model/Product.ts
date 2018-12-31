@@ -7,5 +7,5 @@ export interface Product {
   amount: number;
   rabat: number;
   description: string;
-  photoAddress: string;
+  imgSrc: string;
 }

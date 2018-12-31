@@ -1,99 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Sign Up Form by Colorlib</title>
-  <!-- Main css -->
-</head>
-<body>
-
 <div class="main">
+  <div class="container col-md-8 position-center">
 
-  <!-- Sign up form -->
-  <section class="signup">
-    <div class="container">
+    <div class="signup">
       <div class="signup-content">
         <div class="signup-form">
           <h2 class="form-title">Sign up</h2>
-          <form method="POST" class="register-form" id="register-form">
+          <form method="POST" class="register-form" id="register-form" [formGroup]="registerForm"
+                (ngSubmit)="register()">
             <div class="form-group">
-              <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-              <input type="text" name="name" id="name" placeholder="Your Name"/>
+              <label for="firstName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="text" name="firstName" id="firstName" placeholder="Imię" formControlName="firstName"/>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control"  name="lastName" id="lastName" placeholder="Nazwisko" formControlName="lastName"/>
             </div>
             <div class="form-group">
               <label for="email"><i class="zmdi zmdi-email"></i></label>
-              <input type="email" name="email" id="email" placeholder="Your Email"/>
+              <input type="email" name="email" id="email2" placeholder="Email" formControlName="email"/>
             </div>
             <div class="form-group">
               <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-              <input type="password" name="pass" id="pass" placeholder="Password"/>
+              <input type="password" name="pass" id="pass" placeholder="Password" formControlName="password"/>
             </div>
             <div class="form-group">
-              <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-              <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+              <label for="street"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="street" id="street" placeholder="Ulica" formControlName="street"/>
             </div>
             <div class="form-group">
-              <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-              <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+              <label for="houseNo"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="houseNo" id="houseNo" placeholder="Numer domu" formControlName="houseNo"/>
+            </div>
+            <div class="form-group">
+              <label for="flatNo"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="flatNo" id="flatNo" placeholder="Numer mieszkania" formControlName="flatNo"/>
+            </div>
+            <div class="form-group">
+              <label for="zipCode"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="zipCode" id="zipCode" placeholder="Kod pocztowy" formControlName="zipCode"/>
+            </div>
+            <div class="form-group">
+              <label for="city"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="city" id="city" placeholder="Miasto" formControlName="city"/>
+            </div>
+            <div class="form-group">
+              <label for="phone"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input type="text" name="phone" id="phone" placeholder="Numer telefonu" formControlName="phone"/>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
+              <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a
+                href="#" class="term-service">Terms of service</a></label>
             </div>
             <div class="form-group form-button">
               <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
             </div>
           </form>
         </div>
-        <div class="signup-image">
-          <a href="#" class="signup-image-link">I am already member</a>
-        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Sing in  Form -->
-  <section class="sign-in">
-    <div class="container">
-      <div class="signin-content">
-        <div class="signin-image">
-          <a href="#" class="signup-image-link">Create an account</a>
-        </div>
-
-        <div class="signin-form">
-          <h2 class="form-title">Sign up</h2>
-          <form method="POST" class="register-form" id="login-form">
-            <div class="form-group">
-              <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-              <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
-            </div>
-            <div class="form-group">
-              <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-              <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-            </div>
-            <div class="form-group">
-              <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-              <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-            </div>
-            <div class="form-group form-button">
-              <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-            </div>
-          </form>
-          <div class="social-login">
-            <span class="social-label">Or login with</span>
-            <ul class="socials">
-              <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-              <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-              <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  </div>
 </div>
 
-<!-- JS -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
+<div class="container">
+  <h1 class="form-heading">login Form</h1>
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Zarejestruj się</h2>
+        <p>Wprowadź dane</p>
+      </div>
+      <form id="Login">
+
+        <div class="form-group">
+
+
+          <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Imię" formControlName="firstName"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control"  name="lastName" id="lastName" placeholder="Nazwisko" formControlName="lastName"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" formControlName="email"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="street" id="street" placeholder="Ulica" formControlName="street"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="houseNo" id="houseNo" placeholder="Nr domu / nr mieszkania" formControlName="houseNo"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="Kod pocztowy" formControlName="zipCode"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="city" id="city" placeholder="Miasto" formControlName="city"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="phone" id="phone" placeholder="Numer telefonu" formControlName="phone"/>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+
+      </form>
+    </div>
+    <p class="botto-text"> Designed by Sunil Rajput</p>
+  </div>
+</div>
+
