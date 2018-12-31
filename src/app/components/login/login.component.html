@@ -24,12 +24,12 @@
           <a href="reset.html">Zapomniałeś hasło?</a>
         </div>
         <div class="forgot">
-          <span routerLink="/register">Nie masz konta?</span>
+          <a [routerLink]="['/register']">Nie masz konta?</a>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Zaloguj się</button>
 
       </form>
     </div>
-    <p class="botto-text"> Designed by Sunil Rajput</p>
   </div>
 </div>
+<router-outlet></router-outlet>
