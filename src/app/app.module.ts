@@ -25,6 +25,8 @@ import {LoginComponent} from './components/login/login.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FirebaseUsersService} from './service/firebase-users.service';
+import {AlertService} from './alerts/_services/alert.service';
+import {AlertComponent} from './alerts/_directives/alert.component';
 
 const routes: Routes = [
   {path: '', component: ProductsComponent},
@@ -52,7 +54,8 @@ const routes: Routes = [
     MenuComponent,
     OrderComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ const routes: Routes = [
     MongoProductsService,
     FirebaseProductsService,
     FirebaseUsersService,
-    BasketService
+    BasketService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

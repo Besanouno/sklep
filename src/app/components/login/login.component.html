@@ -6,7 +6,7 @@
         <h2>Zaloguj się</h2>
         <p>Wprowadź adres email oraz hasło</p>
       </div>
-      <form id="Login">
+      <form [formGroup]="loginForm" id="Login">
 
         <div class="form-group">
 
@@ -23,11 +23,10 @@
         <div class="forgot">
           <a href="reset.html">Zapomniałeś hasło?</a>
         </div>
-        <div class="forgot">
-          <a [routerLink]="['/register']">Nie masz konta?</a>
+        <div>
+          Nie masz konta? <a [routerLink]="['/register']">Zarejestruj się</a>
         </div>
-        <button type="submit" class="btn btn-primary">Zaloguj się</button>
-
+        <button class="btn btn-primary" (click)="logIn()">Zaloguj się</button>
       </form>
     </div>
   </div>
