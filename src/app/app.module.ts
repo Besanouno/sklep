@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductsComponent} from './components/products/products.component';
 import {BasketComponent} from './components/basket/basket.component';
@@ -14,9 +14,9 @@ import {BasketService} from './service/BasketService';
 import {BasketPreviewComponent} from './components/basketPreview/basket.preview.component';
 import {NewProductComponent} from './components/newProduct/new.product.component';
 import {MenuComponent} from './components/menu/menu.component';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireModule} from 'angularfire2';
 import {AuthGuard} from './firebase/auth.guard';
 import {OrderComponent} from './components/order/order.component';
 import {FirebaseProductsService} from './service/firebase-products.service';
@@ -77,4 +77,5 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

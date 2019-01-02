@@ -13,6 +13,7 @@ import {AlertService} from '../../alerts/_services/alert.service';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+  private failed: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,10 +39,9 @@ export class LoginComponent implements OnInit {
     this.authService.login({email: loginFormValue.email, password: loginFormValue.password})
       .then(_ => {
         this.router.navigate(['/']);
-        this.message('elo');
       })
       .catch(response => {
-        console.log('elo');
+        this.failed = true;
         this.message('Niepoprawny email lub hasło');
       });
   }

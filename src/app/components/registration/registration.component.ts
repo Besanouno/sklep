@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-  private usersService: FirebaseUsersService
+    private usersService: FirebaseUsersService
   ) {}
 
   ngOnInit() {

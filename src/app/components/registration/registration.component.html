@@ -1,65 +1,60 @@
 <div class="container">
-  <h1 class="form-heading">login Form</h1>
+  <h1 class="form-heading">register Form</h1>
   <div class="login-form">
-    <div class="main-div">
+    <div class="main-div col-md-8">
       <div class="panel">
         <h2>Zarejestruj się</h2>
         <p>Wprowadź dane</p>
       </div>
-      <form id="Registerb">
+      <form id="Register" [formGroup]="registerForm">
 
         <div class="form-group">
-
-          <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Imię" formControlName="firstName"/>
-
+          <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Imię"
+                 formControlName="firstName"/>
         </div>
 
         <div class="form-group">
-
-          <input type="text" class="form-control"  name="lastName" id="lastName" placeholder="Nazwisko" formControlName="lastName"/>
-
+          <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Nazwisko"
+                 formControlName="lastName"/>
         </div>
 
         <div class="form-group">
-
           <input type="email" class="form-control" name="email" id="email" placeholder="Email" formControlName="email"/>
-
         </div>
 
         <div class="form-group">
-
-          <input type="text" class="form-control" name="street" id="street" placeholder="Ulica" formControlName="street"/>
-
+          <input type="password" class="form-control" name="password" id="password" placeholder="Hasło"
+                 formControlName="password"/>
         </div>
 
         <div class="form-group">
-
-          <input type="text" class="form-control" name="houseNo" id="houseNo" placeholder="Nr domu / nr mieszkania" formControlName="houseNo"/>
-
+          <input type="text" class="form-control" name="street" id="street" placeholder="Ulica"
+                 formControlName="street"/>
         </div>
 
         <div class="form-group">
-
-          <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="Kod pocztowy" formControlName="zipCode"/>
-
+          <input type="text" class="form-control" name="houseNo" id="houseNo" placeholder="Nr domu / nr mieszkania"
+                 formControlName="houseNo"/>
         </div>
 
         <div class="form-group">
+          <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="Kod pocztowy"
+                 formControlName="zipCode"/>
+        </div>
 
+        <div class="form-group">
           <input type="text" class="form-control" name="city" id="city" placeholder="Miasto" formControlName="city"/>
-
         </div>
 
         <div class="form-group">
-
-          <input type="text" class="form-control" name="phone" id="phone" placeholder="Numer telefonu" formControlName="phone"/>
-
+          <input type="text" class="form-control" name="phone" id="phone" placeholder="Numer telefonu"
+                 formControlName="phone"/>
         </div>
 
         <div>
-          Masz już konto? <a href="javascript:void(0)" [routerLink]="['/login']">Zaloguj się</a>
+          Masz już konto? <a [routerLink]="['/login']">Zaloguj się</a>
         </div>
-        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+        <button type="submit" class="btn btn-primary" (click)="register()">Zarejestruj się</button>
 
       </form>
     </div>
