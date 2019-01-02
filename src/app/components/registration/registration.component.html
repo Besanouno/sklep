@@ -1,6 +1,8 @@
 <div class="container">
   <h1 class="form-heading">register Form</h1>
-  <div class="login-form">
+  <div *ngIf="weakPassword" class="alert alert-danger" role="alert" style="text-align: center">Hasło jest za słabe - wymagane przynajmniej 6 znaków</div>
+  <div *ngIf="emailExists" class="alert alert-danger" role="alert" style="text-align: center">Podany adres email jest już zajęty</div>
+    <div class="login-form">
     <div class="main-div col-md-8">
       <div class="panel">
         <h2>Zarejestruj się</h2>
