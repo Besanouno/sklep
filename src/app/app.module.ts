@@ -27,6 +27,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FirebaseUsersService} from './service/firebase-users.service';
 import {AlertService} from './alerts/_services/alert.service';
 import {AlertComponent} from './alerts/_directives/alert.component';
+import {ReversedAuthGuard} from "./firebase/reversed.auth.guard";
 
 const routes: Routes = [
   {path: '', component: ProductsComponent},
@@ -37,7 +38,11 @@ const routes: Routes = [
     component: OrderComponent,
     canActivate: [AuthGuard]
   },
-  {path: 'login', component: LoginComponent},
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [ReversedAuthGuard]
+  },
   {path: 'register', component: RegistrationComponent}
 ];
 
