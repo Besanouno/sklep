@@ -13,6 +13,7 @@ export class BasketComponent implements OnInit {
 
   private totalPrice: string;
   private totalAmount = 0;
+  private empty = false;
   private products: ProductInBasket[];
 
   constructor(
@@ -43,6 +44,10 @@ export class BasketComponent implements OnInit {
     this.basketService.getTotalPrice().subscribe(
       data => this.totalPrice = data.toFixed(2)
     );
+  }
+
+  public isEmpty(): boolean {
+    return this.totalAmount === 0;
   }
 
 }

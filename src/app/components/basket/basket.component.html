@@ -1,59 +1,53 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../../../favicon.ico">
-
-  <title>Dashboard Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
-
-  <!-- Custom styles for this template -->
-</head>
-
-<body>
 <app-header-component></app-header-component>
 
-<div class="container-fluid">
-  <div class="row">
-    <main role="main" class="col-md-8" style="margin: 0 auto;">
-      <div class="table-responsive">
-        <table class="table table-striped table-sm" style="margin-top: 5%">
-          <thead>
-          <tr>
-            <th style="width: 50%">Nazwa</th>
-            <th style="width: 25%">Ilość</th>
-            <th style="width: 25%">Cena (zł)</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let p of products">
-            <td>{{p.product.name}}</td>
-            <td>{{p.amount}}</td>
-            <td>{{(p.amount * p.product.price).toFixed(2)}}</td>
-          </tr>
-          <tr style="font-weight: bolder; font-size: large">
-            <td>Suma</td>
-            <td>{{totalAmount}}</td>
-            <td>{{totalPrice}}</td>
-          </tr>
-          </tbody>
-        </table>
+<div *ngIf="!isEmpty(); else empty_basket">
+  <div class="container-fluid">
+    <div class="row">
+      <main role="main" class="col-md-8" style="margin: 0 auto;">
+        <div class="table-responsive">
+          <h3 style="margin-top: 50px">W koszyku:</h3>
+          <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+              <th style="width: 50%">Nazwa</th>
+              <th style="width: 25%">Ilość</th>
+              <th style="width: 25%">Cena (zł)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of products">
+              <td>{{p.product.name}}</td>
+              <td>{{p.amount}}</td>
+              <td>{{(p.amount * p.product.price).toFixed(2)}}</td>
+            </tr>
+            <tr style="font-weight: bolder; font-size: large">
+              <td>Suma</td>
+              <td>{{totalAmount}}</td>
+              <td>{{totalPrice}}</td>
+            </tr>
+            </tbody>
+          </table>
 
-        <button routerLink="/order" type="button" style="border-color: gray; float: right; margin-right: 20%" class="btn btn-primary">Zamów</button>
-      </div>
-    </main>
+          <button routerLink="/order" type="button" style="border-color: gray; float: right; margin-right: 20%"
+                  class="btn btn-primary">Zamów
+          </button>
+        </div>
+      </main>
+    </div>
   </div>
 </div>
 
-</body>
-</html>
-
-<table>
-</table>
+<ng-template #empty_basket>
+  <div>
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-md-8" style="margin: 0 auto; text-align: center">
+          <h2 style="margin-top: 50px">Twój koszyk jest pusty</h2>
+        </main>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
 
 <router-outlet></router-outlet>
